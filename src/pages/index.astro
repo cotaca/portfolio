@@ -1,0 +1,155 @@
+---
+import Base from '../layouts/Base.astro';
+import projects from '../data/projects.json';
+import tagColors from '../data/tag-colors.json';
+
+const github = 'https://github.com/cotaca';
+const linkedin = 'https://www.linkedin.com/in/cedric-kawczynski-bb3218346/';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const tagColor = (t: string) => (tagColors as Record<string, string>)[t];
+const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+---
+
+<Base
+  title="Cedric Kawczynski"
+  description="Portfolio von Cedric Kawczynski – dualer Informatik-Student & Software-Entwickler."
+>
+  <header>
+    <div class="prompt"><span>cedric@portfolio</span>:~$ whoami</div>
+    <h1>Cedric<br />Kawczynski<span class="fx cursor"></span></h1>
+    <div class="role">// Dualer Informatik-Student &amp; Software-Entwickler</div>
+    <p class="intro">
+      Ich studiere Informatik dual bei der Deutschen Telekom und arbeite dort als Software-Entwickler im Backend. In meiner Freizeit baue ich
+      Lösungen für Dinge, die mich selbst nerven oder persönlich begeistern.
+    </p>
+    <div class="links">
+      <a class="btn" href={github} target="_blank" rel="noopener noreferrer">
+        <span class="icon" style={`--icon: url(${base}/icons/github.svg)`} aria-hidden="true"></span>
+        GitHub
+      </a>
+      <a class="btn" href={linkedin} target="_blank" rel="noopener noreferrer">
+        <span class="icon" style={`--icon: url(${base}/icons/linkedin.svg)`} aria-hidden="true"></span>
+        LinkedIn
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <div class="prompt"><span>cedric@portfolio</span>:~$ ls projekte/</div>
+    <div class="cards">
+      {projects.map((p) => {
+        const Card = p.entries ? 'div' : 'a';
+        return (
+        <Card class="card" href={p.url || undefined} target={p.url ? '_blank' : undefined} rel={p.url ? 'noopener noreferrer' : undefined}>
+          <div class="card-bar">
+            {p.entries ? (
+              <>
+                <span>{slug(p.title)}/</span>
+                <span class="open">▸ {p.entries.length} Projekte</span>
+              </>
+            ) : (
+              <>
+                <span>{slug(p.title)}/README.md</span>
+                <span class={p.openSource ? 'open' : 'closed'}>{p.openSource ? '● open source' : '○ closed source'}</span>
+              </>
+            )}
+          </div>
+          {p.image ? (
+            <img class="shot" src={`${base}/images/${p.image}`} alt={`Screenshot ${p.title}`} loading="lazy" />
+          ) : (
+            <div class="shot placeholder">[ Screenshot {p.title} ]</div>
+          )}
+          <div class="card-body">
+            <h2><span>#</span> {p.title}</h2>
+            <div class="sub">{p.subtitle}</div>
+            {p.description && <p>{p.description}</p>}
+            {p.entries && (
+              <ul class="entries">
+                {p.entries.map((e) => {
+                  const Entry = e.url ? 'a' : 'span';
+                  return (
+                    <li>
+                      <Entry href={e.url || undefined} target={e.url ? '_blank' : undefined} rel={e.url ? 'noopener noreferrer' : undefined}>
+                        <strong>{e.title}</strong>
+                        <small>{e.event} · {e.team}</small>
+                      </Entry>
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
+            <div class="tags">{p.tags.map((t) => <span style={tagColor(t) && `--tag: ${tagColor(t)}`}>{t}</span>)}</div>
+            {p.url && <div class="open-link">→ öffnen</div>}
+          </div>
+        </Card>
+        );
+      })}
+    </div>
+  </main>
+</Base>
+
+<style is:global>
+  header { display: flex; flex-direction: column; gap: 22px; }
+  main { display: flex; flex-direction: column; gap: 24px; }
+  .role { font-size: clamp(14px, 2vw, 18px); color: var(--text-soft); font-weight: 500; }
+  .intro { margin: 0; max-width: 600px; font-size: 16px; line-height: 1.75; text-wrap: pretty; }
+
+  .links { display: flex; flex-wrap: wrap; gap: 12px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 10px 16px;
+    border: 1px solid var(--border-2); background: var(--surface);
+    color: var(--text); text-decoration: none; font-size: 14px;
+    transition: border-color .2s, color .2s, transform .2s;
+  }
+  .icon { width: 18px; height: 18px; background: currentColor; mask: var(--icon) center / contain no-repeat; }
+  .btn:hover, .btn:focus-visible { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+  .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+  @media (max-width: 900px) { .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 600px) { .cards { grid-template-columns: 1fr; } }
+  .card {
+    display: flex; flex-direction: column;
+    text-decoration: none; color: var(--text);
+    background: var(--surface); border: 1px solid var(--border);
+    transition: border-color .2s, transform .2s, box-shadow .2s;
+  }
+  .card[href]:hover, .card[href]:focus-visible {
+    color: var(--text);
+    border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 14px 30px rgba(0, 0, 0, .45);
+  }
+  .card-bar {
+    display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    padding: 10px 14px; border-bottom: 1px solid var(--border);
+    background: var(--surface-2); font-size: 12px; color: var(--muted);
+  }
+  .card-bar .open { color: var(--text); font-weight: 700; }
+  .card-bar .closed { color: var(--tag); font-weight: 700; }
+  .shot { display: block; width: 100%; aspect-ratio: 16 / 10; object-fit: cover; border-bottom: 1px solid var(--border); }
+  .placeholder {
+    background: repeating-linear-gradient(135deg, #161616 0 10px, #1b1b1b 10px 20px);
+    display: grid; place-items: center; font-size: 12px; color: var(--muted);
+  }
+  .card-body { padding: 22px 20px 20px; display: flex; flex-direction: column; gap: 12px; flex: 1; }
+  .card h2 { margin: 0; font: 700 24px/1.15 'JetBrains Mono', monospace; letter-spacing: -.03em; color: var(--text-strong); }
+  .card h2 span, .open-link { color: var(--muted); }
+  .sub { color: var(--text); }
+  .card[href]:hover .open-link { color: var(--accent); }
+  .sub { font-size: 14px; line-height: 1.5; }
+  .card p { margin: 0; font-size: 14px; line-height: 1.7; color: var(--text-soft); }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; padding-top: 6px; margin-top: auto; }
+  .tags span { font-size: 12px; padding: 3px 8px; border: 1px solid color-mix(in srgb, var(--tag) 35%, transparent); color: var(--tag); }
+  .open-link { font-size: 13px; padding-top: 6px; }
+  .entries { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--border); }
+  .entries li > * {
+    display: flex; flex-direction: column; gap: 2px;
+    position: relative; padding: 10px 0 10px 26px; border-bottom: 1px solid var(--border);
+    color: var(--text); text-decoration: none; transition: color .2s, padding-left .2s;
+  }
+  .entries li > *::before { content: '├─'; position: absolute; left: 0; top: 12px; color: var(--muted); font-size: 12px; }
+  .entries li:last-child > *::before { content: '└─'; }
+  .entries strong { font-size: 15px; color: var(--text-strong); }
+  .entries small { font-size: 12px; color: var(--muted); }
+  .entries a:hover, .entries a:focus-visible { padding-left: 32px; }
+  .entries a:hover strong, .entries a:focus-visible strong { color: var(--accent); }
+</style>

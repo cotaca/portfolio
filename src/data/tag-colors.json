@@ -1,0 +1,19 @@
+{
+  "Next.js": "#f0f0f0",
+  "React": "#61dafb",
+  "TypeScript": "#4d9fff",
+  "JavaScript": "#f7df1e",
+  "Tailwind": "#38bdf8",
+  "Material UI": "#3d9bff",
+  "FastAPI": "#2dd4bf",
+  "Python": "#ffd43b",
+  "PostgreSQL": "#6b9bd8",
+  "Tesseract OCR": "#ff8a65",
+  "Docker": "#2496ed",
+  "Java": "#f89820",
+  "Spring": "#6db33f",
+  "Astro": "#ff5d01",
+  "Godot": "#478cbf",
+  "GDScript": "#7fb8e6",
+  "Aseprite": "#c9a0dc"
+}

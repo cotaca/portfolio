@@ -1,0 +1,21 @@
+[
+  {
+    "title": "SmartReceipts",
+    "subtitle": "Belege abfotografieren, Ausgaben verstehen.",
+    "description": "Web-App, die Kassenbons per OCR erfasst und die Ausgaben auswertet.",
+    "image": "smartreceipts-preview.webp",
+    "tags": ["Next.js", "TypeScript", "Tailwind", "FastAPI", "Python", "PostgreSQL", "Tesseract OCR", "Docker"],
+    "url": "https://github.com/cotaca/smart-receipts",
+    "openSource": true
+  },
+  {
+    "title": "Game Jams",
+    "subtitle": "Spiele in wenigen Tagen, unter Zeitdruck, im Team.",
+    "image": "game-jam-preview.webp",
+    "tags": ["Godot", "GDScript", "Aseprite"],
+    "entries": [
+      { "title": "BubbleDuck", "event": "Global Game Jam 2025", "team": "3er-Team", "url": "https://byte-dev.itch.io/bubble-duck" },
+      { "title": "Neu-gier", "event": "Hannover Game Jam 2024", "team": "2er-Team", "url": "https://byte-dev.itch.io/neu-gier" }
+    ]
+  }
+]

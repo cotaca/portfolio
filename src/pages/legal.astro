@@ -1,0 +1,142 @@
+---
+import Base from '../layouts/Base.astro';
+
+const address = ['c/o Online-Impressum 11546', 'Europaring 90', '53757 Sankt Augustin'];
+const email = 'Y290YWNhQG1haWwub25saW5lLWltcHJlc3N1bS5kZQ==';
+const [user, host] = atob(email).split('@');
+const readable = `${user} [at] ${host.replace(/\./g, ' [punkt] ')}`;
+---
+
+<Base title="Impressum & Datenschutz – Cedric Kawczynski" description="Impressum und Datenschutzerklärung des Portfolios von Cedric Kawczynski.">
+  <main class="legal">
+    <div class="prompt"><span>cedric@portfolio</span>:~$ cat impressum.md datenschutz.md</div>
+    <h1>Impressum &amp; Datenschutz</h1>
+
+    <section id="impressum">
+      <h2>Impressum</h2>
+      <p>Angaben gemäß § 5 DDG</p>
+      <p>
+        Cedric Kawczynski<br />
+        {address.map((line) => <>{line}<br /></>)}
+      </p>
+      <p>E-Mail: <span data-email={email}>{readable}</span></p>
+    </section>
+
+    <section id="datenschutz">
+      <h2>Datenschutz&shy;erklärung</h2>
+    </section>
+
+    <section>
+      <h3>1. Verantwortlicher</h3>
+      <p>
+        Verantwortlich für die Datenverarbeitung auf dieser Website ist Cedric Kawczynski. Die Kontaktdaten finden Sie
+        oben im <a href="#impressum">Impressum</a>.
+      </p>
+    </section>
+
+    <section>
+      <h3>2. Das Wichtigste in Kürze</h3>
+      <p>
+        Diese Website ist eine rein statische Seite. Sie setzt keine Cookies, verwendet keine Analyse- oder
+        Tracking-Tools, bindet keine Inhalte von Drittanbietern ein und enthält keine Formulare. Schriftarten, Bilder und
+        Icons werden direkt von diesem Server geladen. Personenbezogene Daten fallen nur in den technisch notwendigen
+        Server-Logfiles des Hosters an (siehe Abschnitt 3) und wenn Sie mir eine E-Mail schreiben (siehe Abschnitt 4).
+      </p>
+    </section>
+
+    <section>
+      <h3>3. Hosting über GitHub Pages</h3>
+      <p>
+        Diese Website wird über GitHub Pages bereitgestellt, einen Dienst der GitHub Inc., 88 Colin P. Kelly Jr. Street,
+        San Francisco, CA 94107, USA.
+      </p>
+      <p>
+        Beim Aufruf der Website verarbeitet GitHub automatisch Daten, die Ihr Browser übermittelt. Dazu gehören
+        insbesondere Ihre IP-Adresse, Datum und Uhrzeit des Zugriffs, die aufgerufene Seite, die zuvor besuchte Seite
+        (Referrer) sowie Browsertyp und Betriebssystem. Diese Daten sind technisch erforderlich, um die Website
+        auszuliefern und die Sicherheit und Stabilität des Dienstes zu gewährleisten.
+      </p>
+      <p>
+        Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Mein berechtigtes Interesse liegt in der sicheren und
+        zuverlässigen Bereitstellung dieser Website. Auf Umfang und Speicherdauer der Logfiles habe ich keinen Einfluss;
+        sie richten sich nach den Vorgaben von GitHub.
+      </p>
+      <p>
+        Dabei können Daten in die USA übermittelt werden. GitHub ist nach dem EU-U.S. Data Privacy Framework
+        zertifiziert; für die Übermittlung besteht damit ein Angemessenheitsbeschluss der EU-Kommission
+        (Art. 45 DSGVO). Weitere Informationen finden Sie in der <a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener noreferrer">Datenschutzerklärung von GitHub</a>.
+      </p>
+    </section>
+
+    <section>
+      <h3>4. Kontakt per E-Mail</h3>
+      <p>
+        Wenn Sie mir eine E-Mail schreiben, verarbeite ich Ihre E-Mail-Adresse und den Inhalt Ihrer Nachricht, um Ihre
+        Anfrage zu beantworten. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO; mein berechtigtes Interesse liegt darin,
+        Anfragen beantworten zu können.
+      </p>
+      <p>
+        E-Mails und Briefpost an die Adressen im Impressum laufen über den Dienst Online-Impressum.de der Clear-Media
+        UG, Europaring 90, 53757 Sankt Augustin. Der Dienst leitet E-Mails an mich weiter, nimmt Briefpost an und
+        digitalisiert sie für mich.
+      </p>
+      <p>
+        Ich lösche Ihre Daten, sobald Ihre Anfrage erledigt ist und keine gesetzlichen Aufbewahrungspflichten
+        entgegenstehen.
+      </p>
+    </section>
+
+    <section>
+      <h3>5. Links zu anderen Websites</h3>
+      <p>
+        Diese Website enthält Links zu externen Angeboten, etwa GitHub, LinkedIn und itch.io. Diese Links sind einfache
+        Verweise: Erst wenn Sie einen davon anklicken, wird eine Verbindung zum jeweiligen Anbieter hergestellt. Ab dann
+        gelten dessen Datenschutzbestimmungen.
+      </p>
+    </section>
+
+    <section>
+      <h3>6. Ihre Rechte</h3>
+      <p>Sie haben gegenüber mir folgende Rechte hinsichtlich Ihrer personenbezogenen Daten:</p>
+      <ul>
+        <li>Auskunft (Art. 15 DSGVO)</li>
+        <li>Berichtigung (Art. 16 DSGVO)</li>
+        <li>Löschung (Art. 17 DSGVO)</li>
+        <li>Einschränkung der Verarbeitung (Art. 18 DSGVO)</li>
+        <li>Datenübertragbarkeit (Art. 20 DSGVO)</li>
+        <li>
+          Widerspruch gegen die Verarbeitung (Art. 21 DSGVO), sofern sie auf Art. 6 Abs. 1 lit. f DSGVO beruht und
+          Gründe vorliegen, die sich aus Ihrer besonderen Situation ergeben
+        </li>
+      </ul>
+      <p>
+        Wenden Sie sich dafür einfach an die E-Mail-Adresse im Impressum. Außerdem haben Sie das Recht, sich bei einer
+        Datenschutz-Aufsichtsbehörde zu beschweren (Art. 77 DSGVO).
+      </p>
+    </section>
+
+    <p class="stand">Stand: Oktober 2026</p>
+  </main>
+</Base>
+
+<script>
+  for (const el of document.querySelectorAll<HTMLElement>('[data-email]')) {
+    const link = document.createElement('a');
+    link.href = `mailto:${atob(el.dataset.email!)}`;
+    link.textContent = el.textContent;
+    el.replaceChildren(link);
+  }
+</script>
+
+<style>
+  .legal { display: flex; flex-direction: column; gap: 28px; max-width: 70ch; }
+  h1 { font-size: clamp(28px, 6vw, 48px); }
+  h2 { margin: 0 0 12px; font-size: 24px; letter-spacing: -.03em; color: var(--text-strong); hyphens: manual; }
+  h3 { margin: 0 0 12px; font-size: 16px; color: var(--text-strong); }
+  #datenschutz h2 { margin: 0; }
+  p, li { margin: 0; font-size: 14px; line-height: 1.75; color: var(--text-soft); }
+  p + p { margin-top: 12px; }
+  ul { margin: 12px 0; padding-left: 20px; }
+  a { overflow-wrap: anywhere; }
+  .stand { font-size: 12px; color: var(--muted); }
+</style>
