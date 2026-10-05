@@ -1,7 +1,5 @@
 # Portfolio
 
-Personal portfolio website of Cedric Kawczynski, computer science student and software developer.
-
 A single page with a short intro, links to GitHub and LinkedIn, and a list of my personal projects.
 
 ## Tech Stack
