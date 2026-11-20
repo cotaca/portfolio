@@ -1,5 +1,14 @@
 [
   {
+    "title": "TutorMe",
+    "subtitle": "Vorlesungsfolien ordnen, Karteikarten lernen.",
+    "description": "Browser-App ohne Backend: Folien pro Modul verwalten und durchsuchen, Karteikarten mit Verweis auf einzelne Folien nach dem Leitner-System lernen.",
+    "image": "tutor-me-preview.webp",
+    "tags": ["React", "TypeScript", "Vite", "Mantine", "pdf.js", "ExcelJS", "IndexedDB"],
+    "url": "https://github.com/cotaca/tutor-me",
+    "openSource": true
+  },
+  {
     "title": "SmartReceipts",
     "subtitle": "Belege abfotografieren, Ausgaben verstehen.",
     "description": "Web-App, die Kassenbons per OCR erfasst und die Ausgaben auswertet.",
